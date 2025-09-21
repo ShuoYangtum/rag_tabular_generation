@@ -102,7 +102,8 @@ class PromptTemplate:
         prompt = self.template.format(
             num_examples=len(examples),
             examples=examples_text,
-            query_features=query_text
+            query_features=query_text,
+            target_feature=target_feature
         )
         
         return prompt
