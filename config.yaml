@@ -1,0 +1,30 @@
+# RAG+LLM表格生成配置文件
+
+# 模型配置
+model:
+  name: "Qwen/Qwen3-1.7B-Instruct"  
+  tokenizer: null  # 如果为null，则使用与模型相同的tokenizer
+  device: "auto"  # 设备选择：auto, cpu, cuda
+  max_length: 2048  # 最大生成长度
+
+# RAG配置
+rag:
+  k: 5  # 检索最相似的k个样本
+  similarity_method: "cosine"  # 相似度计算方法：cosine, euclidean, manhattan
+
+# 数据路径配置
+data:
+  train_csv: "data/train.csv"  # 训练集CSV文件路径
+  test_csv: "data/test.csv"    # 测试集CSV文件路径
+  output_csv: "data/predictions.csv"  # 输出预测结果CSV文件路径
+
+# 目标特征配置
+target_feature:
+  name: "target"  # 目标特征的列名
+
+# 生成配置
+generation:
+  temperature: 0.7  # 生成温度
+  top_p: 0.9       # nucleus sampling参数
+  do_sample: true   # 是否使用采样
+  max_new_tokens: 50  # 最大新生成token数

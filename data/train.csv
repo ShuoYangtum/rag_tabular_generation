@@ -1,0 +1,16 @@
+age,income,education_level,experience_years,target
+25,50000,Bachelor,2,high
+30,75000,Master,5,high
+22,35000,High School,1,low
+35,90000,PhD,8,high
+28,60000,Bachelor,3,medium
+45,120000,Master,15,high
+26,45000,Bachelor,2,medium
+32,80000,Master,6,high
+29,55000,Bachelor,4,medium
+38,95000,PhD,10,high
+24,40000,High School,1,low
+31,70000,Bachelor,5,medium
+27,50000,Bachelor,3,medium
+33,85000,Master,7,high
+23,38000,High School,0,low
