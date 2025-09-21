@@ -30,6 +30,7 @@ class RAGRetriever:
         self.train_features = None
         self.train_targets = None
         self.feature_columns = None
+        self.label_maps = {}  # 初始化label_maps为空字典
         
     def fit(self, train_df: pd.DataFrame, target_feature: str):
         """
@@ -79,8 +80,6 @@ class RAGRetriever:
                 label_map = {val: idx for idx, val in enumerate(unique_values)}
                 self.train_features[col] = self.train_features[col].map(label_map)
                 # 保存编码映射
-                if not hasattr(self, 'label_maps'):
-                    self.label_maps = {}
                 self.label_maps[col] = label_map
     
     def _preprocess_query(self, query_row: pd.Series) -> np.ndarray:
@@ -97,7 +96,7 @@ class RAGRetriever:
         
         # 处理缺失值
         for col in self.feature_columns:
-            if query_features[col].isna():
+            if pd.isna(query_features[col]):
                 if col in self.train_features.columns:
                     if self.train_features[col].dtype in ['int64', 'float64']:
                         # 数值型特征用训练集均值填充
